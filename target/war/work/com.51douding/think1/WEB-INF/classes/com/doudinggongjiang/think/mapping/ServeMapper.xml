@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.doudinggongjiang.think.dao.ServeDao">
+
+
+	<resultMap type="com.doudinggongjiang.think.vo.Serve" id="ServeResult">
+
+		 <association property="fromId" column="fromId"
+			javaType="com.gj.entity.UserInfo" select="selectUserUser" />
+		 <association property="region" column="region"
+			javaType="com.gj.entity.SanJI" select="selectSanJis" />
+			
+	</resultMap>
+	<select id="selectSanJis" resultType="com.gj.entity.SanJI">
+		SELECT a1._id AS xian_id,a1.name AS XIAN ,a2.name as SHI,a3.name AS SHENG
+ FROM regions AS a1 JOIN regions AS a2 ON a1.parent=a2._id JOIN regions 
+ a3 ON  a2.parent=a3._id JOIN regions a4 ON a3.parent=a4._id WHERE 
+ a1._id=#{region}
+	</select>
+	<select id="selectUserUser" resultType="com.gj.entity.UserInfo">
+
+		SELECT * FROM
+		view_user_info where userId=#{fromId}
+	</select>
+	<select id="selectAddress" resultType="com.gj.entity.Address" parameterType="int">
+          SELECT * FROM tb_address where address_id=#{address}
+	</select>
+	<!--添加一条需求信息 -->
+	<insert id="addServe" parameterType="com.doudinggongjiang.think.vo.Serve">
+
+		INSERT INTO
+		TB_SERVE(serve_id,title,fromId,price,type,detail,count,createTime,document,otherRequire,address,overdue,tel)
+		values(#{serve_id},#{title},#{fromId.userId},#{price},#{type},#{detail},#{count},#{createTime},#{document},
+		#{otherRequire},#{address.address_id},#{overDue},#{tel})
+	</insert>
+	<!-- 查询需求信息 -->
+	<select id="selectServe" resultMap="ServeResult"
+		parameterType="com.doudinggongjiang.think.vo.ServePramer">
+		<!-- select * from TB_SERVE -->
+		
+SELECT a1.*,a2.SHENG,a2.SHI,a2.XIAN FROM TB_SERVE AS a1 LEFT JOIN 
+tb_address AS a2 ON a1.fromId=a2.user_id
+
+		 where 1=1 
+		 <choose>
+		<when test="id!=null and ''!=id">
+		 and a1.serve_id=#{id}
+		</when>
+		<when test="fromId!=null and ''!=fromId">
+		and	a1.fromId=#{fromId}
+		
+		</when>
+		<when test="serve!=null">
+		   <if test="serve.title!=null and ''!=serve.title">
+				and
+				<if test="list!=null">
+					<foreach collection="list" index="index" item="item" open="("
+						separator="or" close=")">
+						a1.title like #{item}
+					</foreach>
+				</if>
+			</if>
+			<if test="beforeDate!=null and afterDate!=null">
+			and a1.createTime between #{beforeDate}  and  #{afterDate}
+			
+			</if>
+			<if test="lowPrice!=0 and highPrice!=0">
+			and a1.price between #{lowPrice}  and  #{highPrice}
+			</if>
+		    <if test="minCount!=0 and maxCount!=0">
+			and a1.count between #{minCount}  and  #{maxCount}
+			</if>
+		</when>
+		<when test="region_id!=0">
+		and (a2.sheng_id=#{region_id} or a2.shi_id=#{region_id} or a2.xian_id=#{region_id})
+		</when>
+		<when test="region_name!=null and ''!=region_name">
+		and (a2.SHENG=#{region_name} OR a2.SHI=#{region_name} OR a2.XIAN=#{region_name})
+		</when>
+		</choose> 
+		
+
+		<if test="serve!=null">
+			<if test="serve.title!=null and ''!=serve.title">
+				and
+				<if test="list!=null">
+					<foreach collection="list" index="index" item="item" open="("
+						separator="or" close=")">
+						title like #{item}
+					</foreach>
+				</if>
+			</if>
+
+		</if>
+
+         ORDER BY a1.createTime DESC
+		limit #{size},#{pageMaxSize} 
+	</select>
+	<!-- 跟新需求信息 -->
+	<update id="updateServe" parameterType="com.doudinggongjiang.think.vo.Serve">
+		UPDATE TB_SERVE
+		SET(title,price,type,detail,count,createTime,attachment,otherRequire,tel,address)
+		=(#{title},#{price},#{type},#{detail},#{count},#{createTime},#{attachment},#{otherRequire}
+		,#{tel},#{address.address_id})
+		WHERE serve_id=#{serve_id}
+
+	</update>
+	<select id="messgae" resultType="com.gj.entity.Message">
+		select * from tb_idea
+	</select>
+	<insert id="addFavorites" >
+	INSERT TB_SERVE_favorites(serve_id,user_id) VALUES(#{serve_id},#{user_id})
+	</insert>
+	<delete id="removeFavorites" parameterType="string">
+	delete from TB_SERVE_favorites where serve_id=#{serve_id} and user_id=#{user_id}
+	</delete>
+	<select id="selectMyServeFavorites"  resultMap="ServeResult">
+	 SELECT a1.* FROM TB_SERVE AS a1 RIGHT JOIN  
+tb_serve_favorites AS a2 ON a1.serve_id=a2.serve_id WHERE a2.user_id=#{user_id}
+ limit #{size},#{pageMaxSize}
+	</select>
+	<select  id="selectRecommendServe" resultMap="ServeResult"
+		parameterType="int">
+		 
+
+ SELECT a1.*,a2.SHENG,a2.SHI,a2.XIAN FROM TB_SERVE AS a1 LEFT JOIN 
+tb_address AS a2 ON a1.fromId=a2.user_id
+ 
+ RIGHT JOIN (SELECT object_id  AS obj_id FROM tb_recommend where number=3) AS obj 
+		ON a1.serve_id=obj.obj_id
+		limit #{size},#{pageMaxSize} 
+		</select>
+</mapper>

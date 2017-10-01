@@ -1,0 +1,60 @@
+body{margin: 0;padding: 0;font-size: 12px;font-family: "微软雅黑";}
+a{text-decoration: none;}
+.bqgr{min-height:100%; height:auto !important; height:100%; margin:0 auto -95px;
+	width: 100%;min-width: 1200px;color: #000000;background-color: #f5f5f5;}
+.head{float: left;width: 100%;min-width: 1200px;text-align: center;}
+.head-up{float: left;width: 100%;min-width: 1200px;padding: 10px 0;border-bottom: 1px solid #D0CECF;}
+.gr_content{width: 1200px;margin: 0 auto;}
+.hup-l{float: left;width: 50%;margin-left: 10%;}
+.hup-l  a{float: left;color:#Fb5685;}
+.hup-r{float:right;width: 38%;}
+.hup-r a{float: left;color: #000000;}
+.head-down{float: left;background-color: #ffffff;width: 100%;min-width: 1200px;padding: 30px 0;}
+
+
+.shu{float: left;width: 1px;height: 16px;background-color: #000000;margin: 0 10px;}
+.shu1{float: left;width: 1px;background-color: #FB5685;height: 60px;margin: 0 30px;}
+.logo{float: left;}
+.fab{float: left;}
+.dd-1{float: left;width: 80%;margin-left: 10%;}
+
+.gr_main{float: left;width: 100%;min-width: 1200px;margin-bottom: 50px;text-align: center;}
+.conin{float: left;width: 84%;margin: 20px 8%;border: 1px solid #F5F5F5;
+	background-color: #FFFFFF;padding: 50px 0;}
+.coin-mid{float: left; width: 700px;margin-left: 200px; }
+.comid-l{float: left;width: 60%;}
+.title{float: left;font-size: 24px;width: 100%;text-align: center;margin: 10px 0;}
+.tit-f{float: left;width: 100%;text-align: center;margin-bottom: 40px;}
+.infor{float: left;font-size: 16px;margin: 5px 0;}
+.infor-l{float: left;width: 80px;margin-left:40px;margin-top: 5px;}
+.infor-r{float: left;width: 300px;}
+.infor-r input{float: left; width: 200px;height: 26px;font-size: 16px;margin-bottom: 15px;}
+.mian{float: left;width: 70px;height: 25px;color:#4799ec; font-size: 14px;text-align: center;
+	line-height: 25px;cursor: pointer;margin-left: 6px;border-radius: 8px;}
+.comid-r{float: left;margin-top: 105px;}
+.tijo{float: left;width: 600px;}
+.butt{float: left;width: 120px;height: 40px;border: none;background-color: #4799EC;
+	color: #F5F5F5;font-size: 18px;font-weight: bold;margin: 20px 150px;border-radius: 5px;}
+.footer{ clear:both;background-color: #4d4d4d;width: 100%;min-width: 1200px;height: 180px;}
+.foot-up{float: left;width: 60%;margin-left: 25%;color: #FFFFFF;margin-top: 15px;}
+.upone{float: left;width: 25%;text-align: left;}
+.upone a{color: #FFFFFF;}
+.oa{float: left;line-height: 25px;width: 100%;}
+.foot-down{float: left;width: 84%;margin-left: 8%;border-top: 1px solid #4799EC;
+	text-align: center;margin-top: 5px;line-height: 35px;color: #FFFFFF;}
+
+
+
+.comid{float: left;width: 82%;}
+.title-0{float: left;font-size: 24px;width: 100%;text-align: center;margin: 10px 0;}
+.tit-f-0{float: left;width: 100%;text-align: center;margin-bottom: 40px;}
+.infor-0{float: left;font-size: 16px;margin: 5px 0;}
+.infor-l-0{float: left;width:160px;margin-left:110px;margin-top: 5px;}
+.infor-r-0{float: left;width: 300px;}
+.infor-r-0 input{float: left; width: 220px;height: 26px;font-size: 16px;
+	margin-bottom: 15px;border: 1px solid #d7d7d7;}
+	
+#gender{
+	margin: 0;
+	padding: 0;
+}

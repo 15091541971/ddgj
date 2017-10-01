@@ -1,0 +1,256 @@
+html,body{
+	margin:0;padding:0;
+}
+a{
+	color: inherit;
+	text-decoration: none;
+}
+.header_login{
+	float: left;
+	height: 120px;
+	width: 100%;
+	min-width: 1200px;
+}
+.head_content{
+	margin: 0 auto;
+	width: 1200px;
+}
+.head_logo{
+	float: left;width: 100%;
+	min-width: 1200px;
+	border-bottom: 2px solid #4CA4FB;
+	height: 120px;
+	text-align: center;
+}
+.head_logoImg{
+	float: left;
+	margin-top: 30px;
+}
+.head_logoLine{
+	float: left;width: 1px;
+	height: 60px;
+	margin: 30px 20px;
+	background-color: #FF3263;
+}
+.head_logoLogin{
+	float: right;
+	margin-top: 90px;
+	line-height: 30px;
+	font-size: 18px;
+}
+.head_logoLogin a{
+	color: #FF3263;
+}
+.login_main{
+	float: left;
+	width: 100%;
+	min-width: 1200px;
+	text-align: center;
+}
+.sign_form{
+	float: left;width: 920px;
+	margin:60px 140px;
+	border: 1px solid #CFCDD0;
+	padding-bottom: 20px;
+}
+.sign_choose,.sign_choose1{
+	float: left;width: 460px;
+	height: 100px;line-height: 100px;
+	font-size: 22px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.sign_choose{
+	border-bottom: 2px solid #FF3263;
+}
+.sign_choose1{
+	border-bottom: 2px solid #CFCDD0;
+	background-color: #F5F5F5;
+}
+.sign_unit,.sign_unit1{
+	float: left;width: 920px;
+	margin: 20px 0;
+	font-size: 20px;
+}
+.sign_unit1{
+	text-align: center;
+}
+.sign_left{
+	float: left;width: 320px;
+	text-align: right;
+	line-height: 35px;
+}
+.sign_right{
+	float: left;width: 590px;
+}
+.sign_blank,.sign_blank1{
+	float: left;
+	font-size: 18px;
+	height: 35px;
+	border: 1px solid #C9C9C9;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	padding: 0 5px;
+	color: #999999;
+	outline: none;s
+}
+.sign_blank{
+	width: 280px;
+}
+.sign_blank_d{
+	width: 200px;
+	float: left;
+	font-size: 18px;
+	height: 35px;
+	border: 1px solid #C9C9C9;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	padding: 0 5px;
+	color: #999999;
+	outline: none;
+}
+
+.sign_blank1{
+	width: 80px;
+	margin-right: 40px;
+}
+.sign_yanz{
+	float: left;
+	color: #4CA4FB;
+	font-size: 16px;
+	line-height: 35px;
+	cursor: pointer;
+}
+#pawpwd{
+	display: none;
+}
+.sign_xiyi{
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+}
+.sign_unit1 a{
+	color: #4CA4FB;
+}
+.sign_sub{
+	float: left;width: 780px;
+	height: 80px;
+	background-color: #4CA4FB;
+	color: #FFFFFF;
+	font-size: 22px;
+	border: none;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	margin: 40px 70px;
+}
+
+
+.login_foot{
+	float: left;
+	width:100%;height:100px;
+	min-width: 1200px;
+	border-top: 1px solid #969696;
+}
+.login_footUp{
+	float: left;
+	width: 723px;
+	margin: 0 240px;
+	height: 80px;
+	font-size: 16px;
+}
+.login_footUnit{
+	float: left;
+	width: 180px;
+	text-align: center;
+	line-height: 80px;
+}
+.login_footDown{
+	float: left;width: 1200px;
+	text-align: center;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+}
+
+
+/*login*/
+.login_img{
+	width: 100%;
+	margin-top: 2px;
+	min-width: 1200px;
+	float: left;
+	overflow: hidden;
+	margin-bottom: 100px;
+}
+.login_bac{
+	width: 1920px;
+	height: 600px;
+}
+.login_kuang{
+	float: left;width: 100%;
+	min-width: 1200px;
+	text-align: center;
+}
+.login_form{
+	float: right;width: 350px;
+	margin-top: -575px;
+	background-color: #FFFFFF;
+	height: 350px;
+	margin-right: 100px;
+	
+}
+.login_formUp{
+	float: left;width: 350px;
+	height: 80px;
+	line-height: 80px;
+	text-align: center;
+	color: #4CA4FB;
+	font-size: 22px;
+}
+.login_unit{
+	float: left;width: 300px;
+	margin: 15px 24px;
+	height: 40px;
+	border: 1px solid #DDDDDD;
+}
+.login_unit1,.login_unit2{
+	float: left;width: 300px;
+	margin: 15px 24px;
+	height: 40px;
+}
+.login_unit2{
+	text-align: right;
+}
+.login_unitLeft{
+	float: left;width: 50px;
+	height: 40px;
+	background-color: #DDDDDD;
+	text-align: center;
+	line-height: 40px;
+}
+.login_unitLeft img{
+	vertical-align: middle;
+}
+.login_unitRight{
+	float: left;width: 245px;
+}
+.login_blank{
+	float: left;width: 235px;
+	height: 33px;
+	margin-left: 5px;
+	border: none;
+	outline: none;
+	color: #666666;
+	font-size: 16px;
+}
+.login_sub{
+	float: left;width: 300px;
+	height: 40px;
+	background-color: #4CA4FB;
+	border: none;
+	color: #FFFFFF;
+	font-size: 20px;
+}

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.douding.user.dao.UserResgisterDao">
+       
+        <insert id="addUser" parameterType="com.douding.user.entity.User">
+                insert into 
+                user
+                     (userId,userName,userPhone,userPassword,status,type)
+                 values
+                     (#{userId},
+                      #{userName},
+                      #{userPhone},
+                      #{userPassword},
+                      #{status},
+                      #{type})
+        </insert>
+      
+     <select id="selectUserByPhone" parameterType="string" resultType="com.douding.user.entity.User">
+          select  *  from user WHERE userPhone=#{userPhone}
+     </select>
+     
+     
+     <insert id="completeInformation" parameterType="com.douding.user.entity.Message">
+           insert into
+              message
+                  (id,userId,nikeName,name,email,userIcon,registerDate,field,telephone)
+               values
+                 (#{id}, 
+                  #{userId},
+                  #{nikeName},
+                  #{name},
+                  #{email},
+                  #{userIcon}	,
+                  #{registerDate},
+                  #{field},
+                  #{telephone}
+                 )   
+     </insert>
+    
+     <select id="selectConsumerId" resultType="string">
+       select userId from message where userId=#{userId}
+     </select>
+    
+     <update id="updateConsumerInfo" parameterType="com.douding.user.entity.Message">
+        update 
+           message
+        set  nikeName=#{nikeName},
+             name=#{name},
+             email=#{email},
+             userIcon=#{userIcon},
+             field=#{field},
+             telephone=#{telephone}
+        where     
+             userId=#{userId}
+     </update>
+    
+   <update id="updateUserStatus" parameterType="com.douding.user.entity.User">
+    update 
+       user 
+    set  status=#{status}
+    where userId=#{userId}
+   
+   </update>
+ 
+ </mapper>

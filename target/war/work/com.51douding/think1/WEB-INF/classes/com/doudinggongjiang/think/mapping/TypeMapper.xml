@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.doudinggongjiang.think.dao.IdeaTypeDao">
+
+	<!--类别的结果集 -->
+	<resultMap type="com.doudinggongjiang.think.vo.Type" id="typeResult1">
+	    <id column="type_id" javaType="int" property="type_id" />
+		<collection property="item" column="type_id" javaType="java.util.List"
+			select="selectAllTypeOfParent" ofType="com.doudinggongjiang.think.vo.Type" />
+
+	</resultMap>
+	 <insert id="addType" parameterType="com.doudinggongjiang.think.vo.Type">
+		insert into tb_type(type_name,type_level,type_parent)
+		values(#{type_name},#{type_level},#{type_parent})
+	</insert>
+	<select id="selectAllType" resultMap="typeResult1">
+		select * from tb_type where type_level=1
+	</select>
+	<select id="selectAllTypeOfParent" resultMap="typeResult1">
+		select * from tb_type where type_parent=#{type_id}
+	</select>
+	<select id="selectTypeByTypeId" resultMap="typeResult1">
+		select * from tb_type where type_id=#{type_id}
+	</select>
+	<select id="selectTypeByTypeLevel" parameterType="int" resultType="com.doudinggongjiang.think.vo.Type">
+	select * from tb_type where type_level=#{type_level}
+	</select>
+	<select id="selectTypeByParent" parameterType="int" resultType="com.doudinggongjiang.think.vo.Type">
+	select * from tb_type where type_parent=#{type_parent}
+	</select>
+	
+    <select id="selectAllPerant"  resultType="com.doudinggongjiang.think.vo.Type">
+     select * from tb_type where type_level=1;
+    </select>
+    <select id="selectTypeNameByParent" parameterType="int" resultType="com.doudinggongjiang.think.vo.Type">
+	select * from tb_type where type_id=#{type_id}
+	</select>
+</mapper>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+ <mapper namespace="com.douding.user.dao.EnterpriseResgisterDao">
+ 
+     <resultMap type="com.douding.user.entity.Enterprise" id="enterpriseResult">
+        <association property="region" column="region" javaType="com.gj.entity.SanJI"
+           select="selectRegion"/>  
+     </resultMap>
+     
+     	<select id="selectUserUser" resultType="com.gj.entity.UserInfo">
+
+		SELECT * FROM
+		view_user_info where userId=#{fromId}
+	</select>
+	
+	<select id="selectRegion" resultType="com.gj.entity.SanJI">
+
+	   SELECT sheng.`name` AS SHENG ,sheng._id AS sheng_id,shi.`name` AS SHI ,
+	   shi._id AS shi_id,A3.xian AS XIAN ,a3._id AS xian_id FROM 
+	   (SELECT _id,parent,NAME AS xian FROM regions ) AS a3 JOIN  
+	   regions AS shi ON a3.parent=shi.`_id` JOIN regions AS sheng ON shi.`parent`=sheng.`_id` WHERE a3._id=#{region}
+	   
+	</select>
+ 
+ <!-- 添加商家 -->
+  <insert id="addUser" parameterType="com.douding.user.entity.User">
+                insert into 
+                user
+                     (userId,userName,userPhone,userPassword,status,type)
+                 values
+                     (#{userId},
+                      #{userName},
+                      #{userPhone},
+                      #{userPassword},
+                      #{status},
+                      #{type})
+        </insert>
+        <update id="updateEnterpriseStatus" parameterType="com.douding.user.entity.User">
+          update user
+           set status=#{status}
+            where userId=#{userId}
+        </update>
+        <!-- 根据手机号码查找商家 -->
+         <select id="selectUserByPhone" parameterType="string" resultType="com.douding.user.entity.User">
+          select  *  from user WHERE userPhone=#{userPhone}
+     </select>
+     <!-- 保存企业基本信息 -->
+     <insert id="enterpriseInfo" parameterType="com.douding.user.entity.Enterprise">
+        insert into
+            tb_enterprise 
+              (enterprise_id,fromId,enterpriseName,registerAddress,unifiedSocialCreditCode,
+                 legalPersonName,enterpriseWeb,sphereOfBusiness,licenceIssuingAuthority,
+                 registeredCapital,registeredTime,createTime,region)
+        values
+        (#{enterpriseId},
+        #{enterpriseId},
+         #{enterpriseName},
+         #{registerAddress},
+         #{unifiedSocialCreditCode},
+         #{legalPersonName},
+         #{enterpriseWeb},
+         #{sphereOfBusiness},
+         #{licenceIssuingAuthority},
+         #{registeredCapital},
+         #{registeredTime},
+         #{createTime},
+         #{region.xian_id})
+     </insert>
+     
+     <select id="selectUserId" parameterType="com.douding.user.entity.Enterprise" resultType="String">
+       select enterprise_id from tb_enterprise  where enterprise_id=#{enterpriseId};
+     </select> 
+     
+     <update id="enterprisePic" parameterType="com.douding.user.entity.Enterprise">
+           update tb_enterprise 
+           set businessLicensePicture=#{businessLicensePicture},
+               legalPersonPicture=#{legalPersonPicture}
+            where enterprise_id=#{enterpriseId}   
+           <!--  
+           <trim prefix="set" suffixOverrides=",">
+             <if test="businessLicensePicture!=null and businessLicensePicture!=''">
+                businessLicensePicture=#{businessLicensePicture}
+             </if>
+             <if test="legalPersonPicture!=null and legalPersonPicture!=''">
+                legalPersonPicture=#{legalPersonPicture}
+             </if>
+           </trim>
+           where userId=#{userId}
+           -->
+     </update>
+    
+    
+     <update id="updateEnterpriseInfo" parameterType="com.douding.user.entity.Enterprise">
+        update  
+            tb_enterprise 
+        set enterpriseName=#{enterpriseName},
+            registerAddress=#{registerAddress},
+            unifiedSocialCreditCode=#{unifiedSocialCreditCode},
+            legalPersonName=#{legalPersonName},
+            enterpriseWeb=#{enterpriseWeb},
+            region=#{region.xian_id}
+       where
+            enterprise_id=#{enterpriseId}     
+     </update>
+     <select id="selectEnterpriseUnchecked" parameterType="com.douding.user.entity.UserVo" resultType="com.douding.user.entity.Enterprise">
+       SELECT * FROM `tb_enterprise` WHERE fromId IN (SELECT userId FROM USER WHERE STATUS =1)
+       order by  createTime DESC
+       limit #{size},#{pageMaxSize};
+     </select>
+     <select id="selectUncheckedSum" resultType="int">
+        SELECT COUNT(*) FROM `tb_enterprise` WHERE fromId IN (SELECT userId FROM USER WHERE STATUS =1);
+     </select>
+     
+     <select id="selectEnterpriseMSG" parameterType="String" resultMap="enterpriseResult">
+       SELECT * FROM (SELECT * FROM `tb_enterprise`)AS a1 LEFT JOIN
+           (SELECT sheng.`name` AS SHENG ,sheng._id AS sheng_id,shi.`name` AS SHI ,shi._id AS shi_id,A3.xian AS XIAN ,a3._id AS xian_id FROM 
+           (SELECT _id,parent,NAME AS xian FROM regions ) AS a3 JOIN  regions AS shi ON a3.parent=shi.`_id` JOIN regions AS sheng ON shi.`parent`=sheng.`_id`)
+           AS a2 ON a1.region=a2.xian_id WHERE a1.fromId=#{fromId}
+     </select>
+      <update id="checkedEnterprise" parameterType="com.douding.user.entity.UserVo">
+        update user 
+          set status=#{user.status},
+            node = #{user.node}
+          where userId=#{user.userId}    
+ </update>
+ </mapper>

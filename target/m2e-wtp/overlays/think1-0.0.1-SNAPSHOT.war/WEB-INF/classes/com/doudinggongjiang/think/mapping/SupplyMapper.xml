@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.doudinggongjiang.think.dao.SupplyDao">
+
+
+	 <resultMap type="com.doudinggongjiang.think.vo.Supply"  id="SupplyResult">
+         <id column="supply_id" property="supply_id"/>
+		<association property="fromId" column="fromId"
+		javaType="com.gj.entity.UserInfo" select="selectUserUser" />
+		<association property="region" column="region"
+			javaType="com.gj.entity.SanJI" select="selectSanJi" />
+		<collection property="specs" column="supply_id"
+			ofType="com.doudinggongjiang.think.vo.Spec" select="selectSpecs" />	
+	</resultMap>
+	<select id="selectSpecs" resultType="com.doudinggongjiang.think.vo.Spec" >
+	  select * from tb_product_spec where supply_id=#{supply_id}
+	</select>
+	<select id="selectSanJi" resultType="com.gj.entity.SanJI" >
+	SELECT sheng.`name` AS SHENG ,sheng._id AS sheng_id,shi.`name` AS SHI ,shi._id AS shi_id,A1.xian AS XIAN ,a1._id AS xian_id
+FROM (SELECT _id,parent,NAME AS xian FROM regions ) AS a1
+ JOIN  regions AS shi ON a1.parent=shi.`_id` JOIN regions AS sheng 
+ ON shi.`parent`=sheng.`_id` WHERE A1._id=#{region}
+	</select>
+	<select id="selectUserUser" resultType="com.gj.entity.UserInfo">
+
+		SELECT * FROM
+		view_user_info where userId=#{fromId}
+	</select>
+	<select id="selectUserUser1" resultType="com.gj.entity.UserInfo">
+
+		SELECT * FROM
+		view_user_info where userId=#{user_id}
+	</select>
+	<!--发布一条供给信息 -->
+	<insert id="addObject" parameterType="com.doudinggongjiang.think.vo.Supply">
+		INSERT INTO
+		tb_product_supply(supply_id,fromId,title,productName,detail,pictrue,count,price,region,tel,createTime,document,status)
+		VALUES(#{supply_id},#{fromId.userId},#{title},#{productName},#{detail},#{pictrue},#{count},#{price},#{region.xian_id},#{tel},
+		#{createTime},#{document},#{status})
+	</insert>
+	<!-- 查询供给信息 -->
+	<!--  -->
+	<select id="selectSupply" resultMap="SupplyResult"
+		parameterType="com.doudinggongjiang.think.vo.PurchasePramer">
+		SELECT a1.*,a2.SHENG,a2.sheng_id,a2.SHI,a2.shi_id,a2.XIAN,a2.xian_id FROM TB_PRODUCT_SUPPLY AS a1 LEFT JOIN 
+ (SELECT sheng.`name` AS SHENG ,sheng._id AS sheng_id,shi.`name` AS SHI ,shi._id AS shi_id,A1.xian AS XIAN ,a1._id AS xian_id
+FROM (SELECT _id,parent,NAME AS xian FROM regions ) AS a1
+ JOIN  regions AS shi ON a1.parent=shi.`_id` JOIN regions AS sheng 
+ ON shi.`parent`=sheng.`_id`) AS a2 	
+ ON a1.region=a2.xian_id 	
+		where 1=1 
+		<if test="fromId!=null and ''!=fromId">
+		and	a1.fromId=#{fromId} 
+		</if>
+		<choose>
+		
+		<when test="id!=null and ''!=id">
+		 and a1.supply_id=#{id}
+		</when>
+		<when test="supply!=null">
+		<if test="supply.status!=0"></if>
+		  and a1.status=#{status} 
+		</when>
+		<when test="supply!=null">
+		<if test="supply.status==0"></if>
+		  and a1.status!=3
+		</when>
+		
+		
+	
+		<when test="supply!=null">
+		   <if test="supply.title!=null and ''!=supply.title">
+				and
+				<if test="list!=null">
+					<foreach collection="list" index="index" item="item" open="("
+						separator="or" close=")">
+						a1.title like #{item}
+					</foreach>
+				</if>
+			</if>
+			<if test="beforeDate!=null and afterDate!=null">
+			
+			and a1.createTime between #{beforeDate}  and  #{afterDate}
+			
+			</if>
+			<if test="lowPrice!=0 and highPrice!=0">
+			and a1.price between #{lowPrice}  and  #{highPrice}
+			</if>
+		    <if test="minCount!=0 and maxCount!=0">
+			and a1.count between #{minCount}  and  #{maxCount}
+			</if>
+		</when>
+		<when test="region_id!=0">
+		and (a2.sheng_id=#{region_id} or a2.shi_id=#{region_id} or a2.xian_id=#{region_id})
+		</when>
+		<when test="region_name!=null and ''!=region_name">
+		and (a2.SHENG=#{region_name} OR a2.SHI=#{region_name} OR a2.XIAN=#{region_name})
+		</when>
+		</choose>
+     
+		limit #{size},#{pageMaxSize}
+
+	</select>
+	<!-- 更新供给信息(带文件) -->
+	<update id="update" parameterType="com.doudinggongjiang.think.vo.Supply">
+		UPDATE tb_product_supply 
+		set title=#{title},
+		 productName=#{productName},
+ 		 detail=#{detail},
+		 pictrue=#{pictrue},
+		 count=#{count},
+		 price=#{price},
+		 region=#{region.xian_id},
+		 tel=#{tel},
+		 createTime=#{createTime},
+		 status=#{status}
+		where 
+		    supply_id=#{supply_id}
+	</update> 
+		<!-- 更新供给信息(带文件) -->
+	<update id="updateNoPic" parameterType="com.doudinggongjiang.think.vo.Supply">
+		UPDATE tb_product_supply SET
+		 title=#{title},
+		 productName=#{productName},
+ 		 detail=#{detail},
+	     count=#{count},
+		 price=#{price},
+		 region=#{region.xian_id},
+	     tel=#{tel},
+		 createTime=#{createTime},
+		 status=#{status}
+		where 
+		   supply_id=#{supply_id}
+	</update>
+	
+	
+	<insert id="addFavorites" parameterType="string">
+	INSERT INTO tb_product_supply_favorites(supply_id,user_id) values(#{supply_id},#{user_id})
+	</insert>
+	
+	<delete id="removeFavorites" parameterType="string">
+	DELETE FROM tb_product_supply_favorites WHERE supply_id=#{supply_id} and user_id=#{user_id}
+	</delete>
+	
+	 <select id="selectMySupplyFavorites"  resultMap="SupplyResult">
+	SELECT a1.* FROM TB_PRODUCT_SUPPLY 
+	AS a1 RIGHT JOIN tb_product_supply_favorites a2 
+	ON a1.supply_id=a2.supply_id WHERE a2.`user_id`=#{user_id}
+	 limit #{size},#{pageMaxSize}
+	</select>
+	
+	 <select id="selectRecommendSupply" resultMap="SupplyResult" parameterType="com.doudinggongjiang.think.vo.PurchasePramer">
+	SELECT a1.*,a2.SHENG,a2.sheng_id,a2.SHI,a2.shi_id,a2.XIAN,a2.xian_id FROM TB_PRODUCT_SUPPLY AS a1 LEFT JOIN 
+ (SELECT sheng.`name` AS SHENG ,sheng._id AS sheng_id,shi.`name` AS SHI ,shi._id AS shi_id,A1.xian AS XIAN ,a1._id AS xian_id
+FROM (SELECT _id,parent,NAME AS xian FROM regions ) AS a1
+ JOIN  regions AS shi ON a1.parent=shi.`_id` JOIN regions AS sheng 
+ ON shi.`parent`=sheng.`_id`) AS a2 
+ ON a1.region=a2.xian_id
+ 
+ RIGHT JOIN (SELECT object_id  AS obj_id FROM tb_recommend where number=2) AS obj 
+		ON a1.supply_id=obj.obj_id
+		
+		
+ limit #{size},#{pageMaxSize}
+	</select> 
+	
+	<select id="selectSupplyById" resultMap="SupplyResult"
+		parameterType="string">
+		SELECT a1.* FROM TB_PRODUCT_SUPPLY AS a1 where a1.supply_id=#{suply_id};
+	</select>
+	
+	<select id="selectMySupply" resultMap="SupplyResult" resultType="string">
+	SELECT a1.* FROM TB_PRODUCT_SUPPLY AS a1 
+	
+	where a1.fromId=#{fromId} and status!=3;
+	</select>
+	<update id="deleteMySupply" parameterType="string">
+	   update TB_PRODUCT_SUPPLY 
+	   set
+	     status=3
+	   where supply_id=#{suply_id};  
+	</update>
+	<select id="selectSupplySum" parameterType="com.doudinggongjiang.think.vo.Supply" resultType="int">
+	   select count(*) from TB_PRODUCT_SUPPLY where 1=1
+	   <if test="fromId.userId!=null">
+	    and fromId=#{fromId.userId}
+	   </if>
+	   and status!=3;
+	</select>
+	<update id="deleteMySupplys" parameterType="Map">
+	   update TB_PRODUCT_SUPPLY 
+	   set status=3
+	   where supply_id in
+	   <foreach collection="idList" index="index" item="item" open="(" separator="," close=")">
+	       #{item}
+	   </foreach>
+	</update>
+	
+	<select id="selectUncheckProduct" resultType="java.util.HashMap" parameterType="com.doudinggongjiang.think.vo.PurchasePramer">
+	    SELECT e.enterpriseName,s.* FROM (SELECT * FROM `tb_product_supply`)AS s JOIN  
+	    (SELECT enterpriseName,fromId FROM `tb_enterprise`) AS e ON e.fromId=s.fromId AND s.status=1
+	    ORDER BY createTime LIMIT  #{size},#{pageMaxSize}
+	</select>
+	
+	<select id="selectUncheckSum" resultType="int">
+	   SELECT count(*) FROM (SELECT * FROM `tb_product_supply`)AS s JOIN  (SELECT enterpriseName,fromId FROM `tb_enterprise`) 
+	   AS e ON e.fromId=s.fromId AND s.status=1;
+	</select>
+	
+	<select id="saveCheckedMsg" parameterType="com.doudinggongjiang.think.vo.PurchasePramer">
+	  update TB_PRODUCT_SUPPLY
+	  set status=#{supply.status},
+	      node=#{supply.node}
+	  where supply_id=#{supply.supply_id}    
+	</select>
+	
+	<insert id="addSpec" parameterType="java.util.List">
+		insert into tb_product_spec(supply_id,spec,price,count) values
+		<foreach collection="specs" item="spec"  separator="," 
+			 index="index">
+			(#{spec.supply_id},#{spec.spec},#{spec.price},#{spec.count})
+			
+		</foreach>
+	</insert>
+	
+</mapper>

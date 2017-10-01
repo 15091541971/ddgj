@@ -1,0 +1,97 @@
+/*TKTH*/
+@charset "utf-8";
+.pages {
+    padding-right: 2px;
+    float: right;
+}
+.pages #Pagination {
+  float: left;
+  overflow: hidden;
+}
+.pages #Pagination .pagination {
+  height: 40px;
+  text-align: right;
+  font-family: \u5b8b\u4f53,Arial;
+}
+.pages #Pagination .pagination a,
+.pages #Pagination .pagination span {
+  float: left;
+  display: inline;
+  padding:1.5px;
+  border: 1px solid #e6e6e6;
+  border-right: none;
+  background: #fff;
+  color: #4CA4FB;
+  font-family: \u5b8b\u4f53,Arial;
+  font-size: 14px;
+  cursor: pointer;
+}
+.pages #Pagination .pagination .current {
+  background: #4CA4FB;
+  color: #fff;
+}
+.pages #Pagination .pagination .prev,
+.pages #Pagination .pagination .next {
+  float: left;
+  padding:0px;
+  border: 1px solid #e6e6e6;
+  background: #f6f6f6;
+  color: #666666;
+  cursor: pointer;
+}
+.pages #Pagination .pagination .prev i,
+.pages #Pagination .pagination .next i {
+  display: inline-block;
+  width: 4px;
+  height: 11px;
+  margin-right:4px;
+  background: url(../img/icon.fw.png) no-repeat;
+}
+.pages #Pagination .pagination .prev {
+  border-right: none;
+}
+.pages #Pagination .pagination .prev i {
+  background-position: -144px -1px;
+  *background-position: -144px -4px;
+}
+.pages #Pagination .pagination .next i {
+  background-position: -156px -1px;
+  *background-position: -156px -4px;
+}
+.pages #Pagination .pagination .pagination-break {
+  padding:0px;
+  border: none;
+  border-left: 1px solid #e6e6e6;
+  background: none;
+  cursor: default;
+}
+.pages .searchPage {
+  float: left;
+}
+.pages .searchPage .page-sum {
+  color: #999999;
+  font-family: \u5b8b\u4f53,Arial;
+  font-size: 14px;
+}
+.pages .searchPage .page-go {
+  color: #999999;
+  font-family: \u5b8b\u4f53,Arial;
+  font-size: 14px;
+  padding: 10px 0\9;
+  *padding: 6px 0;
+}
+.pages .searchPage .page-go input {
+  width: 20px;
+  height: 15px;
+  margin: 0 5px;
+  border: 1px solid #e4e4e4;
+}
+.pages .searchPage .page-btn {
+  border-radius: 2px;
+  color: #4CA4FB;
+ background:#fff;
+  font-family: Arial, 'Microsoft YaHei';
+  font-size: 14px;
+  text-decoration: none;
+}
+

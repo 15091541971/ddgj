@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>豆丁工匠</title>
+		<link rel="shortcut icon" type="text/css" href="img/logo.ico" />
+		<link rel="stylesheet" href="css/peoplebase.css" />
+		<link rel="stylesheet" href="css/peopleFabu.css" />
+		<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+	</head>
+
+	<body>
+		<!-- 头部导航 -->
+		<div class="top">
+			<div class="top-nav">
+				<ul class="nav-left">
+					<li>
+						<a href="#">用户名</a>
+						<a href="#" class="noborder">退出登录</a>
+					</li>
+				</ul>
+				<ul class="nav-right">
+					<li>
+						<dl>
+							<dt><a href="../index.html" style="color:#4CA4FB;">豆丁工匠首页</a></dt>
+							<dd></dd>
+						</dl>
+
+					</li>
+					<li>
+						<dl>
+							<dt>我的豆丁</dt>
+							<dd></dd>
+						</dl>
+					</li>
+					<li>
+						<dl>
+							<dt>社区</dt>
+							<dd></dd>
+						</dl>
+					</li>
+					<li>
+						<dl>
+							<dt>收藏夹</dt>
+							<dd></dd>
+						</dl>
+					</li>
+					<li>
+						<dl>
+							<dt>消息</dt>
+							<dd></dd>
+						</dl>
+					</li>
+					<li>
+						<dl>
+							<dt class="noborder">联系客服</dt>
+							<dd></dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="lg">
+			<div class="logo">
+				<img src="img/logo.png">
+				<div class="guanwang">
+					<h1>让创意成为产品</h1>
+					<h3>www.doudinggognjiang.com</h3>
+				</div>
+				<span class="gw-r">汇众智,共创造,助力中国制造</span>
+			</div>
+		</div>
+
+		<div class="fabu">
+			<div class="fb">
+				<div class="fbcy">
+					<img src="img/fbcy.png">
+					<span>发布创意</span>
+				</div>
+
+			</div>
+			<div class="msqr">
+				<span>选择行业类别</span>
+				<span>描述确认发布</span>
+			</div>
+			<div class="beijing"></div>
+			<div class="fbnr">
+				<div class="xuanzexiang">
+					<span>您选择了:</span>
+					<span>屠宰及肉类加工-肉制品及其副产品加工</span>
+					<a href="fabuxuanshang.html">修改</a>
+				</div>
+				<form class="msnr" action="" method="get">
+					<p class="msn">标题
+						<a>修改</a>
+					</p>
+					<div class="msn1">
+						<p class="msnk">创意标题创意标题创意标题创意标题创意标题创意标题</p>
+						<div class="msnn">
+							<input type="text" title="search">
+							<span class="save">保&nbsp;存</span><span class="quxiao">取&nbsp;消</span>
+						</div>
+					</div>
+					<script>
+						$(function() {
+							$(".msn>a").click(function() {
+								$(".msnk").css("display", "none");
+								$(".msnn").css("display", "block")
+							})
+							$(".save").click(function() {
+								$(".msnk").css("display", "block");
+								$(".msnn").css("display", "none");
+								$(".msnk").text($(".msnn>input").val());
+								$(".msnn>input").val("")
+							})
+							$(".quxiao").click(function() {
+								$(".msnk").css("display", "block");
+								$(".msnn").css("display", "none");
+								$(".msnn>input").val("")
+							})
+						})
+					</script>
+					<p class="msnt">详情描述:
+						<a>修改</a>
+					</p>
+					<div class="miaoshu">
+						<div class="miaoshu-con">
+							<h1>一、设计要求</h1>
+							<p></p>
+							<p></p>
+							<p></p>
+							<p></p>
+						</div>
+						<div class="miaoshu-con">
+							<h1>二、活动规则</h1>
+							<p></p>
+							<p></p>
+							<p></p>
+							<p></p>
+						</div>
+					</div>
+					<p class="msn">添加图片：<span class="addPicture">上传图片</span><input type="file" id="xdaTanFileImg"  multiple="multiple"  name="fileAttach" onchange="xmTanUploadImg(this)"/>  </p>
+					<div class="addPic" id="addPic">
+						<div class="addPic-con">
+							<img src="../img/chuangyi (2).png">
+							<p class="addPic-con-tu" style="display: block;">
+								<img src="img/delete.png">
+							</p>
+						</div>
+					</div>
+					<div class="lxfs">
+						<span>昵称:</span>
+						<span>皮皮虾</span>
+					</div>
+					<div class="lxfs">
+						<span>联系方式:</span>
+						<span>12345678911</span>
+					</div>
+
+				</form>
+			</div>
+			
+			<script type="text/javascript">  
+    //选择图片，马上预览  
+    function xmTanUploadImg(obj) {  
+  
+//      var fl=obj.files.length;  
+        for(var i=0;i<9;i++){  
+            var file=obj.files[i];  
+            var reader = new FileReader();  
+  
+            //读取文件过程方法  
+  
+            reader.onloadstart = function (e) {  
+                console.log("开始读取....");  
+            }  
+            reader.onprogress = function (e) {  
+                console.log("正在读取中....");  
+            }  
+            reader.onabort = function (e) {  
+                console.log("中断读取....");  
+            }  
+            reader.onerror = function (e) {  
+                console.log("读取异常....");  
+            }  
+            reader.onload = function (e) {  
+                console.log("成功读取....");  
+  
+                var imgstr='<img src="'+e.target.result+'"><p class="addPic-con-tu"><img src="img/delete.png"></p>';  
+                var oimgbox=document.getElementById("addPic"); 
+               	var ndiv = document.createElement("div");
+               	ndiv.innerHTML=imgstr;  
+                ndiv.className="addPic-con";  
+               	oimgbox.appendChild(ndiv);
+                 
+            }  
+  
+            reader.readAsDataURL(file);  
+        }  
+  
+    }  
+</script>  
+			
+			
+			
+			<div class="qdfb">
+				<input type="checkbox" id="policy" name="policy" value="true" />
+				<span>我已经阅读并同意</span>
+				<a href="#">豆丁工匠相关协议</a>
+				<button type="button">确定发布</button>
+			</div>
+		</div>
+
+		<div class="bt">
+			<div class="bt-n">
+				<ul>
+					<li>豆丁指南:</li>
+					<li>
+						<a href="#">注册</a>
+					</li>
+					<li>
+						<a href="#">发布</a>
+					</li>
+					<li>
+						<a href="#">联系我们</a>
+					</li>
+					<li>
+						<a href="#">简介</a>
+					</li>
+				</ul>
+				<ul>
+					<li>特色产品:</li>
+					<li>
+						<a href="#">特色创意产品</a>
+					</li>
+
+				</ul>
+				<ul>
+					<li>服务支持:</li>
+					<li>
+						<a href="#">推广</a>
+					</li>
+					<li>
+						<a href="#">招商</a>
+					</li>
+				</ul>
+				<ul>
+					<li>帮助中心:</li>
+					<li>
+						<a href="#">简介</a>
+					</li>
+					<li>
+						<a href="#">问题</a>
+					</li>
+				</ul>
+			</div>
+			<div class="gs-name">©西安豆丁网络科技有限公司</div>
+		</div>
+	</body>
+
+</html>

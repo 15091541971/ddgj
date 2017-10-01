@@ -1,0 +1,371 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.head{
+    width: 100%;
+    height: 30px;
+    background: rgb(246,244,245);
+    border-bottom: 1px solid rgb(196,194,196);
+}
+.dc{
+    width: 1200px;
+    height: 30px;
+    margin: 0 auto;
+
+}
+
+
+.nav-left{
+    float: left;
+    margin-top: 7px;
+}
+.nav-left>li>.noborder,
+.nav-right>li>dl>.noborder{
+    border:none
+}
+.top-nav{
+    padding: 15px 0;
+    height:30px;
+}
+.nav-left>li>a{
+    color:rgb(47,47,47);
+    font-size:14px;
+    padding:0 15px;
+    border-right:1px solid rgb(47,47,47);
+}
+.nav-right{
+    float: right;
+    margin-top: 7px;
+}
+.nav-right>li{
+    float:left;
+    color:rgb(47,47,47);
+}
+.nav-right>li>dl>dt{
+    color:rgb(47,47,47);
+    height:20px;
+    font-size:12px;
+    padding: 0 15px;
+    cursor: pointer;
+    line-height: 20px;
+    border-right:1px solid rgb(47,47,47);
+}
+.lg{
+    width: 100%;
+    height: 168px;
+    padding-top: 31px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgb(75,165,251);
+}
+.logo{
+    float: right;
+    width: 403px;
+    height: 60px;
+    margin: 0 auto;
+    /*background: red;*/
+}
+.logo a{
+    float: left;
+    width: 99px;
+    height: 40px;
+    background: #ff3366;
+    border: none;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    margin-left: 49px;
+    margin-top: 10px;
+}
+.logo img{
+    width: 52px;
+    height: 60px;
+    float: left;
+    float: left;
+}
+
+.logo form{
+    width: 300px;
+    height: 40px;
+    margin-left: 100px;
+
+}
+.logo form input{
+    width: 226px;
+    height: 38px;
+    border-left: 1px solid rgb(196,196,196);
+    border-top: 1px solid rgb(196,196,196);
+    border-bottom: 1px solid rgb(196,196,196);
+    border-right: 1px solid rgb(76,156,253);
+    margin-top: 10px;
+    color: gray;
+    font-size: 16px;
+}
+.logo form button{
+    width: 68px;
+    height: 40px;
+    border: none;
+    background: rgb(76,156,253);
+    text-align: center;
+    line-height: 40px;
+    margin-top: 10px;
+    margin-left: -3px;
+    color: white;
+    font-size: 16px;
+    letter-spacing:5px;
+
+}
+/*菜单*/
+.menu{
+    clear: both;
+    width: 1200px;
+    height: 87px;
+    margin: 0 auto;
+}
+.menu ul{
+    padding-top: 50px;
+}
+.menu ul li{
+    float: left;
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    color: rgb(47,47,47);
+    line-height: 30px;
+    font-size: 16px;
+    margin: 0 34px;
+    font-weight: bold;
+}
+.menu ul li a{
+    display: block;
+    width: 80px;
+    height: 30px;
+}
+.xuanfu{
+    background: rgb(78,163,253);
+    border-radius: 3px;
+}
+.menu ul li:hover{
+    background: rgb(78,163,253);
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -o-border-radius: 3px;
+    color: white;
+}
+.menu ul li:nth-child(1){
+    margin: 0 0;
+}
+.menu ul li:nth-child(9){
+    margin: 0 0;
+}
+/*content内容*/
+.zgzz-content{
+    width: 1100px;
+    margin: 0 auto;
+    font-size: 16px;
+}
+.yjfl{
+    width: 1100px;
+    line-height: 40px;
+    margin-top: 20px;
+}
+.yjfl-l{
+    width: 80px;
+    float: left;
+    color: rgb(253,52,104);
+    font-weight: bold;
+
+}
+.yjfl-r{
+    float: left;
+    width: 1020px;
+    height: 80px;
+    overflow: hidden;
+}
+.yjfl a{
+    float: left;
+    color: gray;
+    margin: 0 20px;
+}
+.yjfl-r input{
+    border: none;
+    float: right;
+    color: rgb(78,163,253);
+    position: relative;
+    top: -120px;
+    background: none;
+    font-size: 16px;
+    line-height: 40px;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(255,0,0,0);
+}
+.ejfl{
+    width: 1100px;
+    line-height: 40px;
+}
+.ejfl-l{
+    width: 80px;
+    float: left;
+    color: rgb(253,52,104);
+    font-weight: bold;
+}
+.ejfl-r{
+    float: left;
+    width: 1020px;
+}
+.ejfl a{
+    float: left;
+    color: gray;
+    margin: 0 20px;
+}
+.sjfl{
+    width: 1100px;
+    line-height: 40px;
+
+}
+.sjfl-l{
+    width: 80px;
+    float: left;
+    color: rgb(253,52,104);
+    font-weight: bold;
+    padding-bottom: 26px;
+}
+.sjfl-r{
+    float: left;
+    width: 1020px;
+    padding-bottom: 26px;
+}
+.sjfl a{
+    float: left;
+    color: gray;
+    margin: 0 20px;
+}
+/*制造列表*/
+.zzlb{
+    clear: both;
+    width: 100%;
+    height: 1370px;
+    background: rgb(242,242,242);
+}
+.lb{
+    width: 1200px;
+    height: 1140px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+.lb ul{
+    height:1200px;
+}
+.lb ul li{
+    float:left;
+    margin-right:27px;
+    /*margin-top: 10px;*/
+}
+.lb ul li:nth-child(3n){
+    margin-right:0px;
+}
+.lb ul li dl{
+    width:382px;
+    height:162px;
+    background: #fff;
+}
+.lb ul li dl dt{
+    float:left;
+    margin-bottom: 30px;
+}
+.lb ul li dl dd img{
+    float:right;
+    margin:10px;
+    width:140px;
+    height:140px;
+}
+.container-part2-1{
+    margin:18px 7px 18px 25px;
+}
+.container-part2-1 h1{
+    width: 170px;
+    font-size: 19px;
+
+}
+.container-part2-1 h1 a{
+    display: block;
+    width: 170px;
+    text-overflow : ellipsis;
+    white-space : nowrap;
+    overflow : hidden;
+}
+.container-part2-1 p{
+    font-size: 14px;
+}
+.container-part2-1 p:nth-child(2){
+    margin-top: 30px;
+}
+.container-part2-1 p:nth-child(4){
+    color: rgb(78,163,253);
+}
+.container-part2-1 p img{
+    margin-right: 5px;
+}
+.ym{
+    width: 400px;
+    height: 80px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+}
+.ym p{
+    letter-spacing: 5px;
+}
+
+/*底部*/
+.bt{
+    width: 100%;
+    height: 268px;
+    background: rgb(65,65,65);
+
+}
+.bt-n{
+    width: 820px;
+    height: 150px;
+    margin: 0 auto;
+}
+.bt-n ul{
+    width: 180px;
+    height: 180px;
+    float: left;
+    margin-top: 42px;
+
+}
+.bt-n ul:nth-child(1){
+    margin-left: 95px;
+}
+.bt-n ul li {
+    clear: both;
+    display: block;
+    color: rgb(251,251,251);
+    text-align:left;
+    font-size: 18px;
+    line-height: 40px;
+}
+.bt-n ul li a{
+    clear: both;
+    display: block;
+    line-height: 30px;
+    color: rgb(251,251,251);
+    font-size: 16px;
+}
+.gs-name{
+    width: 1200px;
+    color: rgb(251,251,251);
+    clear: both;
+    font-size: 16px;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 45px;
+    border-top: 1px solid rgb(63,146,246);
+}
+

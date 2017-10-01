@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <link rel="shortcut icon" type="text/css" href="../images/logo.ico" />
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/fuwu.css">
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
+    <title>发布服务</title>
+</head>
+<body>
+<!--顶部-->
+<div class="head">
+    <div class="dc">
+        <ul class="nav-left">
+            <li>
+                <a href="#">用户名</a>
+                <a href="#" class="noborder">退出登录</a>
+            </li> 
+        </ul>
+        <ul class="nav-right">
+            <li>
+                <dl>
+                    <dt><a href="../peopleown/peopleJbxx.html">个人中心</a></dt>
+                    <dd></dd>
+                </dl>
+
+            </li>
+            <li>
+                <dl>
+                    <dt><a href="#">社区</a></dt>
+                    <dd></dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt><a href="#">收藏夹</a></dt>
+                    <dd></dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt><a href="#">消息</a></dt>
+                    <dd></dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt><a href="#">联系客服</a></dt>
+                    <dd></dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt class="noborder"><a href="#">网站导航</a></dt>
+                    <dd></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="lg">
+    <div class="logo">
+        <img class="img1" src="../images/logo.png">
+        <div class="guanwang">
+            <img src="../images/发布采购描述_03.jpg">
+        </div>
+
+    </div>
+</div>
+<div class="fabu">
+    <div class="fb">
+        <div class="fbcy">
+            <img src="../images/fuwu.png">
+            <span>发布服务</span>
+        </div>
+
+    </div>
+    <div class="msqr">
+        <span>选择行业类别</span>
+        <span>描述确认发布</span>
+    </div>
+    <div class="beijing"></div>
+    <div class="fbnr">
+        <!--<div class="xuanzexiang">
+            <span>您选择了:</span>
+            <span>家具制造业-造纸和纸质品页</span>
+            <a href="fabuxuanshang.html">修改</a>
+        </div>-->
+        <form class="msnr" action="" method="get">
+            <p class="msn">标题</p>
+            <input class="msnk" type="text" title="search" placeholder="&nbsp;&nbsp;专利名称字数应该为5-32个">
+            
+            <p class="msn">价格</p>
+             <!--<div class="jiage">
+            	<div class="guige">
+            		<h1>规格</h1>
+            		<input type="text"/>            	
+            	</div>
+            	<div class="jiagePice">
+            		<h1>价格</h1>
+            		<input type="text"/>
+            	</div>
+            	<div class="kucun">
+            		<h1>库存</h1>
+            		<input type="text"/>    		
+            	</div>-->
+            	<div id="in">
+	            	<div class="jiage">
+	            		<h1>规格</h1>
+	            		<h1>价格</h1>
+	            		<h1>库存</h1>
+	            	</div>
+	            	<div class="jiage">
+	            		<h1><input name="guige" type="text"/></h1>
+	            		<h1><input name="jiagePice" type="text"/></h1>
+	            		<h1><input name="kucun"type="text"/></h1>
+	            	</div>
+            		
+            	</div>
+            	<!--<input type="submit"/>-->
+	            <p class="msn1" style="clear: both;"><img src="../images/add.png" style="margin-bottom: 20px;" onclick = "addInput('in')"> </p>
+         <!--   </div>-->
+            <p class="msn">服务类目</p>
+            <select class="msnk1">
+            	<option>服务类目名称</option>
+            </select>
+            <div class="tjimg">
+                <span>添加图片:</span>
+                <span>选择图片</span>
+                <input class="tupian" type="file" name="file1" style="opacity: 0;" />
+                <!--<input type="submit" name="Submit" value="添加" />-->
+            </div>
+
+            <p class="msnt">服务详情:</p>
+            <textarea class="msnkt" type="" title="search" placeholder="&nbsp;&nbsp;详细信息在其中表明,45字以上"></textarea>
+
+
+
+
+            <div class="lxfs">
+                <span>昵称:</span>
+                <span>皮皮虾</span>
+            </div>
+            <div class="lxfs">
+                <span>联系方式:</span>
+                <span>12345678911</span>
+            </div>
+
+            <div class="qdfb">
+                <input type="checkbox" id="policy" name="policy" value="true" />
+                <span>我已经阅读并同意</span>
+                <a href="#">豆丁工匠相关协议</a>
+                <button  type="button">确定发布</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<!--底部-->
+<div class="bt">
+    <div class="bt-n">
+        <ul>
+            <li>豆丁指南:</li>
+            <li><a href="#">注册</a></li>
+            <li><a href="#">发布</a></li>
+            <li><a href="#">联系我们</a></li>
+            <li><a href="#">简介</a></li>
+        </ul>
+        <ul>
+            <li>特色产品:</li>
+            <li><a href="#">特色创意产品</a></li>
+
+        </ul>
+        <ul>
+            <li>服务支持:</li>
+            <li><a href="#">推广</a></li>
+            <li><a href="#">招商</a></li>
+        </ul>
+        <ul>
+            <li>帮助中心:</li>
+            <li><a href="#">简介</a></li>
+            <li><a href="#">问题</a></li>
+        </ul>
+    </div>
+    <div class="gs-name">©西安豆丁网络科技有限公司</div>
+</div>
+<script type="text/javascript">
+
+    function delFile(obj, index){
+        var inputFileId = document.getElementById(obj);
+        var inputFileByIndex = document.getElementById(index);
+        inputFileId.removeChild(inputFileByIndex);
+    }
+    function addFile(){
+        var fileName = "inputFile";
+        var inputFileId = document.getElementById(fileName);
+        var index = 1;
+        if(null == inputFileId.lastChild || inputFileId.lastChild.id == undefined ){
+            index = 1;
+        }else{
+            index = parseInt(inputFileId.lastChild.id.substring(6))+1;
+        }
+
+        var p = document.createElement("p");
+        p.id="index_"+index;
+        var input = document.createElement("input");
+        input.type="file";
+        input.name="files";
+        var button = document.createElement("button");
+        button.type="button";button.innerHTML="删除";button.onclick=function(){delFile(fileName, p.id);};
+        p.appendChild(input);
+        p.appendChild(button);
+
+        inputFileId.appendChild(p);
+    }
+    
+    function addInput(c1){
+    	//console.log(123)
+    	var objI     = document.getElementById(c1);
+    	var ObjDiv = document.createElement("div");
+    	var objH1 = document.createElement("h1");
+    	var objH11 = document.createElement("h1");
+    	var objH12 = document.createElement("h1");
+    	var ObjInput = document.createElement("input");
+    	var ObjInput1 = document.createElement("input");
+    	var ObjInput2 = document.createElement("input");
+    	objI.appendChild(ObjDiv);
+    	ObjDiv.setAttribute("class", "jiage");
+    	ObjInput.setAttribute("name", "guige");
+    	ObjInput1.setAttribute("name", "jiagePice");
+    	ObjInput2.setAttribute("name", "kucun")
+    	//ObjDiv.style.addClass= "jiage";
+    	ObjDiv.appendChild(objH1);
+    	ObjDiv.appendChild(objH11);
+    	ObjDiv.appendChild(objH12);
+    	objH1.appendChild(ObjInput);
+    	objH11.appendChild(ObjInput1);
+    	objH12.appendChild(ObjInput2);
+   		
+    	console.log($('input[name="guige"').val())
+    	console.log($('input[name="jiagePice"').val())
+    	console.log($('input[name="kucun"').val())
+    }
+    
+  $("form").submit(function() {
+	//console.log($(this).serializeArray());
+//	 var queryArray = $(formElement).serializeArray();  
+	var queryArray = $(this).serializeArray();  
+	//console.log(queryArray)
+	var jsonString= '[{';  
+	for (var i = 0; i < queryArray.length; i++) {  
+		jsonString+= JSON.stringify(queryArray[i].name) + ':' + JSON.stringify(queryArray[i].value) + ',';  
+	}  
+	jsonString= jsonString.substring(0, (jsonString.length - 1));  
+	jsonString+= '}]';
+	//console.log(jsonString)
+	return false;
+	});
+    
+</script>
+</body>
+</html>

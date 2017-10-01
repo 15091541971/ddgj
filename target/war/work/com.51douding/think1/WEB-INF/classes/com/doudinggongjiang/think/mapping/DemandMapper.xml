@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.doudinggongjiang.think.dao.DemandDao">
+ 
+
+	<resultMap type="com.doudinggongjiang.think.vo.Demand" id="DemandResult">
+
+		 <association property="fromId" column="fromId"
+			javaType="com.gj.entity.UserInfo" select="selectUserUser" />
+			
+		<association property="region" column="region"
+			javaType="com.gj.entity.SanJI" select="selectSanJi">
+		</association>
+		
+	</resultMap>
+	<select id="selectSanJi" resultType="com.gj.entity.SanJI">
+		SELECT sheng.`name` AS SHENG ,sheng._id  AS sheng_id,shi.`name` AS SHI ,shi._id AS shi_id,A1.xian AS XIAN ,a1._id AS xian_id
+FROM (SELECT _id,parent,NAME AS xian FROM regions ) AS a1
+ JOIN  regions AS shi ON a1.parent=shi.`_id` JOIN regions AS sheng 
+ ON shi.`parent`=sheng.`_id` WHERE A1._id=#{region}
+	</select>
+	<select id="selectUserUser" resultType="com.gj.entity.UserInfo">
+
+		SELECT * FROM
+		view_user_info where userId=#{fromId}
+	</select>
+	
+	<!--添加一条需求信息 -->
+	<insert id="addObject" parameterType="com.doudinggongjiang.think.vo.Demand">
+
+		INSERT INTO
+		TB_PRODUCT_DEMAND(demand_id,title,fromId,price,type,detail,count,createTime,document,otherRequire,region,overdue,pictrue,tel,status)
+		values(#{demand_id},#{title},#{fromId.userId},#{price},#{type},#{detail},#{count},#{createTime},#{document},
+		#{otherRequire},#{region.xian_id},#{overDue},#{pictrue},#{tel},#{status})
+	</insert>
+	<!-- 查询需求信息 -->
+	<select id="selectObject" resultMap="DemandResult"
+		parameterType="com.doudinggongjiang.think.vo.PurchasePramer">
+		SELECT a1.*,a2.SHENG,a2.sheng_id,a2.SHI,a2.shi_id,a2.XIAN,a2.xian_id FROM TB_PRODUCT_DEMAND AS a1 LEFT JOIN 
+ (SELECT sheng.`name` AS SHENG ,sheng._id AS sheng_id,shi.`name` AS SHI ,shi._id AS shi_id,A1.xian AS XIAN ,a1._id AS xian_id
+FROM (SELECT _id,parent,NAME AS xian FROM regions ) AS a1
+ JOIN  regions AS shi ON a1.parent=shi.`_id` JOIN regions AS sheng 
+ ON shi.`parent`=sheng.`_id`) AS a2 
+ ON a1.region=a2.xian_id
+		 where 1=1 and a1.status!=3
+		<choose>
+		<when test="id!=null and ''!=id">
+		 and a1.demand_id=#{id}
+		</when>
+		<when test="fromId!=null and ''!=fromId">
+		and	a1.fromId=#{fromId}
+		
+		</when>
+		<when test="demand!=null">
+		   <if test="demand.title!=null and ''!=demand.title">
+				and
+				<if test="list!=null">
+					<foreach collection="list" index="index" item="item" open="("
+						separator="or" close=")">
+						a1.title like #{item}
+					</foreach>
+				</if>
+			</if>
+			<if test="beforeDate!=null and afterDate!=null">
+			and a1.createTime between #{beforeDate}  and  #{afterDate}
+			
+			</if>
+			<if test="lowPrice!=0 and highPrice!=0">
+			and a1.price between #{lowPrice}  and  #{highPrice}
+			</if>
+		    <if test="minCount!=0 and maxCount!=0">
+			and a1.count between #{minCount}  and  #{maxCount}
+			</if>
+		</when>
+		<when test="region_id!=0">
+		and (a2.sheng_id=#{region_id} or a2.shi_id=#{region_id} or a2.xian_id=#{region_id})
+		</when>
+		<when test="region_name!=null and ''!=region_name">
+		and (a2.SHENG=#{region_name} OR a2.SHI=#{region_name} OR a2.XIAN=#{region_name})
+		</when>
+		</choose>
+        ORDER BY a1.createTime DESC
+		limit #{size},#{pageMaxSize}
+	</select>
+	<!-- 跟新需求信息 -->
+	<update id="update" parameterType="com.doudinggongjiang.think.vo.Demand">
+		UPDATE TB_PRODUCT_DEMAND
+		SET(title,price,type,detail,count,createTime,attachment,otherRequire,tel,region)
+		=(#{title},#{price},#{type},#{detail},#{count},#{createTime},#{attachment},#{otherRequire}
+		,#{tel},#{region.xian_id})
+		WHERE demand_id=#{demand_id}
+
+	</update>
+	<select id="messgae" resultType="com.gj.entity.Message">
+		select * from tb_idea
+	</select>
+	<insert id="addFavorites" >
+	INSERT tb_product_demand_favorites(demand_id,user_id) VALUES(#{demand_id},#{user_id})
+	</insert>
+	<delete id="removeFavorites" >
+	delete from tb_product_demand_favorites where demand_id=#{demand_id} and user_id=#{user_id}
+	</delete>
+	<select id="selectFavoritesDemand" resultMap="DemandResult" >
+	SELECT a1.* FROM TB_PRODUCT_DEMAND AS a1 RIGHT JOIN 
+ tb_product_demand_favorites AS a2 
+ ON a1.demand_id=a2.demand_id where a2.user_id=#{user_id}
+ 
+  limit #{size},#{pageMaxSize}
+	</select>
+	<select id="selectDemandSum" parameterType="String" resultType="int">
+	  select count(*) from tb_product_demand where fromId=#{fromId} and status!=3
+	</select>
+	<select id="selectDemandById" parameterType="string" resultMap="DemandResult">
+	  select * from tb_product_demand where demand_id=#{demand_id}
+	</select>
+	<!-- 有文件更新 -->
+	<update id="updateDemand" parameterType="com.doudinggongjiang.think.vo.Demand">
+	  update tb_product_demand set
+	  title=#{title},
+	  detail=#{detail},
+	  count=#{count},
+	  <if test="pictrue!=null">
+	   pictrue=#{pictrue},
+	  </if>
+	  price=#{price},
+	  type=#{type},
+	  region=#{region.xian_id},
+	  tel=#{tel},
+	  createTime=#{createTime},
+	  overDue=#{overDue},
+	  document=#{document}
+	 where
+	  demand_id=#{demand_id} 
+	</update>
+	
+	<update id="deleteMyDemand" parameterType="string">
+	  update tb_product_demand set status=3 where demand_id=#{demand_id}
+	</update>
+	<select id="selectPic" parameterType="string" resultType="string">
+	  select pictrue from tb_product_demand where demand_id=#{demand_id}
+	</select>
+	<update id="updatePic" parameterType="com.doudinggongjiang.think.vo.Demand">
+	  update tb_product_demand set pictrue={pictrue} where demand_id=#{demand_id};
+	</update>
+	<select id="selectUncheckDemand" parameterType="com.doudinggongjiang.think.vo.PurchasePramer" resultType="java.util.HashMap">
+	  	   SELECT u.userPhone,d.* FROM (SELECT * FROM `tb_product_demand`)AS d JOIN  
+	    (SELECT userPhone,userId FROM `user`) AS u ON u.userId=d.fromId AND d.status=1
+	    ORDER BY createTime LIMIT  #{size},#{pageMaxSize}
+	</select>
+	<select id="selectUncheckDemandSum" resultType="int">
+	  SELECT COUNT(*) FROM (SELECT * FROM `tb_product_demand`)AS d JOIN  
+	    (SELECT userPhone,userId FROM `user`) AS u ON u.userId=d.fromId AND d.status=1
+	</select>
+	<update id="saveCheckMsg">
+	  update tb_product_demand
+	  set status=#{demand.status},
+	      node = #{demand.node}
+	  where demand_id=#{demand.demand_id}    
+	</update>
+	
+	<insert id="saveDetailPic" parameterType="com.doudinggongjiang.think.vo.Demand">
+	  insert into tb_product_demand
+	  (demand_id,title,pictrue)
+	  values
+	  (#{demand_id},#{title},#{pictrue}) 
+	  
+	</insert>
+</mapper>

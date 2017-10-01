@@ -1,0 +1,148 @@
+.container-container-left-jbxx a:nth-child(2) {
+	border-bottom: 3px solid #4CA4FB;
+}
+
+.grxx-top {
+	text-align: center;
+	height: 150px;
+	margin: 30px 0 0 15px;
+}
+
+.grxx-top-left {
+	width: 100px;
+	float: left;
+	margin-bottom: 30px;
+}
+
+.grxx-top-left img {
+	margin-bottom: 14px;
+	width: 98px;
+	height: 98px;
+}
+
+.grxx-top-right {
+	float: left;
+	margin-left: 30px;
+	position: relative;
+}
+
+.right-touxiang {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+}
+
+.grxx-top-right p:nth-child(2) {
+	text-align: left;
+	font-size: 18px;
+	color: #47A2F1;
+	margin-bottom: 15px;
+}
+
+.grxx-top-right p:nth-child(3) {
+	text-align: left;
+}
+
+.grxx-top-right p:nth-child(3) span:nth-child(1) {
+	display: block;
+	width: 120px;
+	line-height: 22px;
+	font-size: 16px;
+}
+
+.grxx-top-right p:nth-child(2) span:nth-child(2) {
+	display: inline-block;
+	width: 306px;
+	line-height: 22px;
+	font-size: 14px;
+}
+
+.line {
+	border-top: 2px solid #A5A5A5;
+	background: #f3f3f3;
+	height: 20px;
+}
+
+.grxx-bottom h2 {
+	padding: 15px 0 15px 20px;
+	border-bottom: 1px solid #A5A5A5;
+	font-weight: normal;
+}
+
+.grxx-bottom h2 a {
+	color: #47A2F1;
+	cursor: pointer;
+}
+
+.grxx-con-right {
+	width: 150px;
+	text-align: right;
+}
+
+.grxx-con-crnter {
+	margin-left: 20px;
+}
+
+.grxx-bottom-left {
+	clear: both;
+	padding-left: 50px;
+}
+
+.grxx-bottom-left p {
+	float: left;
+	font-size: 18px;
+	margin-top: 25px;
+}
+
+.grxx-con-crnter {
+	width: 200px;
+	position: relative;
+}
+
+.show,
+.show1,
+.show2,
+.show3,
+.show4,
+.show5,
+.show6 {
+	display: inline-block;
+	width: 500px;
+	position: absolute;
+}
+
+.indu {
+	display: inline-block;
+	width: 500px;
+	height: 50px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.hiddle,
+.hiddle1,
+.hiddle2,
+.hiddle3,
+.hiddle4,
+.hiddle5,
+.hiddle6 {
+	position: absolute;
+	height: 20px;
+	outline: none;
+	display: none;
+	border: 1px solid #000;
+}
+
+.save {
+	margin: 40px 0 0 80px;
+	width: 120px;
+	cursor: pointer;
+	outline: none;
+	height: 45px;
+	border-radius: 10px;
+	background: #007AFF;
+	color: #fff;
+}

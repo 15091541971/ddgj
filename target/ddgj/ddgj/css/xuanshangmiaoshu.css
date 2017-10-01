@@ -1,0 +1,360 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.head{
+    width: 100%;
+    height: 30px;
+    background: rgb(246,244,245);
+    border-bottom: 1px solid rgb(196,194,196);
+}
+.dc{
+    width: 1200px;
+    height: 30px;
+    margin: 0 auto;
+}
+.nav-left{
+    float: left;
+    margin-top: 7px;
+}
+.nav-left>li>.noborder,
+.nav-right>li>dl>.noborder{
+    border:none
+}
+.top-nav{
+    padding: 15px 0;
+    height:30px;
+}
+.nav-left>li>a{
+    color: rgb(250,68,103);
+    font-size:14px;
+    padding:0 15px;
+    border-right:1px solid rgb(47,47,47);
+}
+.nav-right{
+    float: right;
+    margin-top: 7px;
+}
+.nav-right>li{
+    float:left;
+    color:rgb(47,47,47);
+}
+.nav-right>li>dl>dt{
+    color:rgb(47,47,47);
+    height:20px;
+    font-size:12px;
+    padding: 0 15px;
+    cursor: pointer;
+    line-height: 20px;
+    border-right:1px solid rgb(47,47,47);
+}
+
+.lg{
+    width: 100%;
+    height: 116px;
+    padding-top: 31px;
+    margin: 0 auto;
+
+}
+.logo{
+    width: 900px;
+    height: 60px;
+    margin: 0 auto;
+
+
+}
+.logo .img1{
+    width: 57px;
+    height: 67px;
+    float: left;  }
+.guanwang{
+    width: 762px;
+    height: 67px;
+    margin-left: 80px;
+    float: left;
+}
+.fabu{
+    width: 100%;
+    /*height: 1743px;*/
+    background: #F5F5F5;
+    padding-bottom: 188px;
+}
+.fb{
+    width: 1200px;
+    margin: 0 auto;
+    height: 170px;
+}
+.fbcy{
+    width: 184px;
+    height: 41px;
+    margin: 0 auto;
+    padding-top: 60px;
+}
+.fbcy img{
+    text-align: center;
+    margin-top: -18px;
+}
+.fbcy span{
+    font-size: 30px;
+    text-align: center;
+    line-height: 41px;
+    margin-left: 20px;
+    color: rgb(87,87,87);
+}
+.msqr{
+    width: 1200px;
+    height: 26px;
+    margin: 0 auto;
+}
+.msqr span{
+    display: block;
+    float: left;
+    font-size: 22px;
+    width: 600px;
+    height: 26px;
+    line-height: 26px;
+    color: rgb(150,150,150);
+    text-align: center;
+    text-align: center;
+}
+.beijing{
+    display: block;
+    width: 1200px;
+    height: 104px;
+    background: url("../images/beijing.jpg");
+    margin: 0 auto;
+}
+.fbnr{
+    width: 1100px;
+    height: 807px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #d0d0d0;
+    padding-left: 100px;
+}
+.xuanzexiang{
+    width: 802px;
+    height: 122px;
+    line-height: 142px;
+}
+.xuanzexiang span:nth-child(1){
+    font-size: 20px;
+    color: #323232;
+    letter-spacing: 1px;
+}
+.xuanzexiang span:nth-child(2){
+    font-size: 14px;
+    color: #323232;
+    letter-spacing: 1px;
+}
+.xuanzexiang a{
+    font-size: 14px;
+    color: #51a3f9;
+    letter-spacing: 1px;
+    margin-left: 20px;
+
+}
+.msn{
+    width: 787px;
+    height: 24px;
+    border-left: 4px solid #4ca4fe;
+    margin-bottom: 21px;
+    font-size: 20px;
+    padding-left: 9px;
+    color: #353535;
+}
+.msnk{
+    width: 800px;
+    height: 35px;
+    border: 1px solid #d4d4d4;
+    outline: none;
+    -webkit-tap-highlight-color:rgba(255,0,0,0);
+}
+.msnt{
+    width: 787px;
+    height: 24px;
+    border-left: 4px solid #4ca4fe;
+    margin-bottom: 21px;
+    font-size: 20px;
+    padding-left: 9px;
+    color: #353535;
+    margin-top: 28px;
+}
+.msnkt{
+    width: 800px;
+    height: 243px;
+    border: 1px solid #d4d4d4;
+    outline: none;
+    -webkit-tap-highlight-color:rgba(255,0,0,0);
+}
+.sj-time{
+    margin-top: 28px;
+}
+.sj-time span:nth-child(1){
+    height: 24px;
+    border-left: 4px solid #4ca4fe;
+    font-size: 20px;
+    padding-left: 9px;
+    color: #353535;
+}
+.sj-time span:nth-child(2){
+    height: 24px;
+    font-size: 16px;
+    color: #333333;
+}
+.sj-time span:nth-child(4){
+    height: 24px;
+    font-size: 16px;
+    color: #333333;
+}
+.sj-time span:nth-child(5){
+    height: 24px;
+    font-size: 16px;
+    color: #333333;
+}
+.yuan{
+    width: 30px;
+    height: 22px;
+    border: 1px solid #d4d4d4;
+    outline: none;
+    -webkit-tap-highlight-color:rgba(255,0,0,0);
+
+}
+.time{
+    width: 100px;
+    height: 22px;
+    border: 1px solid #d4d4d4;
+    outline: none;
+    -webkit-tap-highlight-color:rgba(255,0,0,0);
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+}
+.tjimg{
+    width: 800px;
+    margin-top: 28px;
+}
+.tjimg span{
+    height: 24px;
+    border-left: 4px solid #4ca4fe;
+    font-size: 20px;
+    padding-left: 9px;
+    color: #353535;
+}
+table{
+
+}
+.td{
+    width: 100px;
+    height: 24px;
+    border-left: 4px solid #4ca4fe;
+    font-size: 20px;
+    padding-left: 9px;
+    color: #353535;
+    float: left;
+    margin-top: 28px;
+
+}
+#inputFile{
+    width: 600px;
+    height: auto;
+    margin-top: 30px;
+    float: left;
+}
+#inputFile input,p{
+    float: left;
+}
+.lxfs{
+    clear: both;
+    width: 802px;
+    height: 20px;
+    line-height: 20px;
+    padding-top: 23px;
+}
+.lxfs span:nth-child(1){
+    font-size: 16px;
+    color: #51a3f9;
+    letter-spacing: 1px;
+}
+.lxfs span:nth-child(2){
+    font-size: 14px;
+    color: #323232;
+    letter-spacing: 1px;
+}
+.qdfb{
+    width: 280px;
+    height: 90px;
+
+    margin: 100px auto 0;
+    text-align: center;
+}
+.qdfb button{
+    width: 150px;
+    height: 50px;
+    display: block;
+    border: none;
+    background: #4ca4fd;
+    margin: 20px auto 0;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    outline: none;
+    -webkit-tap-highlight-color:rgba(255,0,0,0);
+    font-size: 20px;
+    color: white;
+    letter-spacing: 2px;
+}
+.qdfb a{
+    font-size: 12px;
+    color: #51a3f9;
+    letter-spacing: 1px;
+}
+
+/*底部*/
+.bt{
+    width: 100%;
+    height: 268px;
+    background: rgb(65,65,65);
+
+}
+.bt-n{
+    width: 820px;
+    height: 150px;
+    margin: 0 auto;
+}
+.bt-n ul{
+    width: 180px;
+    height: 180px;
+    float: left;
+    margin-top: 42px;
+
+}
+.bt-n ul:nth-child(1){
+    margin-left: 95px;
+}
+.bt-n ul li {
+    clear: both;
+    display: block;
+    color: rgb(251,251,251);
+    text-align:left;
+    font-size: 18px;
+    line-height: 40px;
+}
+.bt-n ul li a{
+    clear: both;
+    display: block;
+    line-height: 30px;
+    color: rgb(251,251,251);
+    font-size: 16px;
+}
+.gs-name{
+    width: 1200px;
+    color: rgb(251,251,251);
+    clear: both;
+    font-size: 16px;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 45px;
+    border-top: 1px solid rgb(63,146,246);
+}
+

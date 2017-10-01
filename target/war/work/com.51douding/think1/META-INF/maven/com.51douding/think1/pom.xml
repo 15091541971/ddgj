@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.51douding</groupId>
+  <artifactId>think1</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>think1</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+    <groupId>com.51douding</groupId>
+    <artifactId>alljar</artifactId>
+     <version>0.0.2-SNAPSHOT</version>
+  
+    </dependency>
+    <dependency>
+    	<groupId>com.51douding</groupId>
+	<artifactId>douding-common-web</artifactId>
+	<version>1.07-SNAPSHOT</version>
+    </dependency>
+    
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+  </dependencies>
+  <build>
+    <finalName>think1</finalName>
+    <plugins>
+    <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.3</version>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.2.2.v20140723</version>
+
+				<configuration>
+					<webApp>
+						<containerIncludeJarPattern>
+							.*/javax.servlet-[^/]*\.jar$|.*/servlet-api-[^/]*\.jar$|.*javax.servlet.jsp.jstl-[^/]*\.jar|.*taglibs-standard-impl-.*\.jar
+						</containerIncludeJarPattern>
+						<webInfIncludeJarPattern>.*/classes/.*</webInfIncludeJarPattern>
+					</webApp>
+				</configuration>
+
+			</plugin>
+    </plugins>
+  </build>
+</project>

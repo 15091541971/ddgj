@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+ <mapper namespace="com.douding.shiro.dao.UserAuthenticationDao">
+   
+    <select id="selectUserByUsername" parameterType="string" resultType="com.douding.user.entity.User">
+      select * from user where userPhone=#{userPhone};
+    </select>
+
+  <select id="selectPermissionByUsername" parameterType="com.douding.shiro.entity.PermissionView" resultType="string">
+  <!--  select permissionName
+     from 
+     user u,tb_role r,tb_permission p,tb_user_role ur,tb_role_permission rp 
+     where 
+     userPhone=#{userModel.userPhone}  and u.userId=ur.userId 
+     and r.roleId=ur.rolerId and p.permissionId=rp.permissionId;-->
+     
+      SELECT permissionName FROM tb_permission WHERE permissionId IN
+         ( SELECT permissionId FROM tb_role_permission WHERE roleId IN
+                ( SELECT roleId FROM tb_role WHERE roleName IN
+                     ( SELECT roleName FROM 
+                         USER u,tb_role r,tb_user_role ur
+                         WHERE 
+                         userPhone=#{userModel.userPhone} 
+                         AND 
+                         u.userId=ur.userId AND r.roleId=ur.rolerId)))
+ 
+  </select>
+  
+  <insert id="insertUserRole" parameterType="com.douding.shiro.entity.PermissionView">
+    insert into 
+         tb_user_role
+     (rolerId,userId)
+     value
+       (
+       #{role.roleId},
+       #{userModel.userId})
+  </insert>
+  
+  <select id="selectUserRoleByUserName"  parameterType="com.douding.shiro.entity.PermissionView" resultType="String">
+    SELECT roleName FROM 
+        USER u,tb_role r,tb_user_role ur
+    WHERE userPhone=#{userModel.userPhone} 
+    AND 
+    u.userId=ur.userId AND r.roleId=ur.rolerId;
+  </select>
+  
+ </mapper>
